@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,3 +13,4 @@
 Auth::routes();
 Route::resource('posts', 'PostController');
 Route::get('/', 'HomeController@index')->name('home');
+

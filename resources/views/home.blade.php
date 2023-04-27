@@ -12,10 +12,15 @@
             @endif
             {{-- If logged-in user has posts, show all posts written by the user. --}}
             <h3>Your Posts</h3>
+            @if(Auth::check())
+                {{-- If  user is logged-in he can create new post. --}}
+                <p><a href="{{route('posts.create')}}">New Post</a>.</p>
+            @endif
             @foreach($posts as $key => $post)
                 <div class="card mt-3">
                     <div class="card-header"><a href="{{url('posts/'.$post->id)}}">{{ $post->title }}</a></div>
                     <div class="card-body">
+                        {{$post->is_draft}}
                         @if($post->is_draft)
                             <span class="badge badge-secondary">Draft</span>
                         @else
@@ -37,7 +42,7 @@
                     </div>
                 </div>
             @endforeach
-
+        
             @if(Auth::check() && $posts->isEmpty())
                 {{-- If logged-in user doesn't have posts, show sentence below. --}}
                 <p>You have no posts yet. Create a new post <a href="{{route('posts.create')}}">here</a>.</p>

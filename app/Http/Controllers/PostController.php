@@ -15,7 +15,7 @@ class PostController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        $posts = Post::where('posted_at','<',Carbon::now()->toDateTimeString())->where('is_draft',0)->where('is_members_only',0)->paginate(10);
+        $posts = Post::all();
         return view('posts.index', compact('posts'));
     }
 

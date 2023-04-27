@@ -7,7 +7,8 @@
             <h3>All Posts</h3>
             @include('posts.item')
             <div class="mt-5">
-                {!! $posts->links() !!}
+            
+
             </div>
         </div>
     </div>
